@@ -3,55 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ada Feng | Chemistry & Code</title>
+    <title>Ada's Bubbling Lab 🧪</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div class="bg-blobs"></div>
+
     <nav class="navbar">
-        <div class="logo">ADA.FENG ✨</div>
-        <ul class="nav-links">
-            <li><a href="#about">Bio</a></li>
-            <li><a href="#projects">Lab Room</a></li>
-            <li><a href="#resources">Library</a></li>
-            <li><a href="#games">Fun Zone</a></li>
-        </ul>
+        <div class="logo">ADA.LAB ☁️</div>
+        <div class="nav-links">
+            <a href="#about">Bio</a>
+            <a href="#projects">Projects</a>
+            <a href="#resources">Vault</a>
+            <a href="#games">Play</a>
+        </div>
     </nav>
 
-    <header id="about" class="header">
-        <div class="header-content">
-            <div class="profile-wrapper">
+    <header id="about" class="hero">
+        <div class="profile-area">
+            <div class="avatar-frame">
                 <img src="your-photo.jpg" alt="Ada Feng" class="profile-pic">
-                <div class="bubble">Hi! ☁️</div>
+                <div class="status-dot"></div>
             </div>
-            <h1>I'm <span class="highlight">Ada Feng</span></h1>
-            <p>Student @ <b>Forest City International School</b></p>
-            <p class="sub-bio">Mixing <b>Chemistry</b> 🧪 with <b>Pure Code</b> 💻 to create something reactive!</p>
+            <h1 class="typing-text">Hi, I'm Ada Feng!</h1>
+            <p class="school-tag">📍 Forest City International School</p>
+            <div class="tags">
+                <span>Chemistry Major 🧪</span>
+                <span>Web Dev 💻</span>
+                <span>Boba Lover 🧋</span>
+            </div>
         </div>
     </header>
 
-    <section id="projects" class="section">
-        <h2>My Project Lab</h2>
-        <div id="project-list" class="grid"></div>
-    </section>
+    <main>
+        <section id="fun-fact" class="glass-card">
+            <h3>Did you know? 💡</h3>
+            <p id="fact-display">Water expands when it freezes! Just like my code...</p>
+            <button onclick="newFact()" class="mini-btn">Next Fact</button>
+        </section>
 
-    <section id="resources" class="section bg-soft-blue">
-        <h2>Resource Dropbox</h2>
-        <div class="upload-container">
-            <input type="file" id="fileInput">
-            <button onclick="uploadFile()" class="btn">Add to Collection</button>
-            <ul id="fileList"></ul>
-        </div>
-    </section>
+        <section id="projects" class="section">
+            <h2 class="section-title">My Creative Compounds</h2>
+            <div id="project-list" class="grid"></div>
+        </section>
 
-    <section id="games" class="section">
-        <h2>Mini Game Break</h2>
-        <div class="game-area">
-            <p>High Score: <span id="high-score">0</span></p>
-            <div id="game-target" onclick="scorePoint()">✨</div>
-        </div>
-    </section>
+        <section id="resources" class="section">
+            <div class="glass-card upload-zone">
+                <h2>The Resource Vault</h2>
+                <p>Drop your study notes or assets here!</p>
+                <input type="file" id="fileInput" hidden>
+                <label for="fileInput" class="upload-label">Choose a File ✨</label>
+                <button onclick="uploadFile()" class="btn-main">Synthesize Upload</button>
+                <ul id="fileList"></ul>
+            </div>
+        </section>
+
+        <section id="games" class="section">
+            <h2 class="section-title">Reaction Time Game</h2>
+            <div class="game-container">
+                <p>Click the bubble before it pops!</p>
+                <div id="game-target" onclick="scorePoint()">🫧</div>
+                <div class="score-board">Score: <span id="current-score">0</span> | Best: <span id="high-score">0</span></div>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
