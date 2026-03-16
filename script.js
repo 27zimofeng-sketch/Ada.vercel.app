@@ -1,64 +1,53 @@
-// 1. Chemistry Facts Generator
+// 1. Chemistry Facts Array
 const facts = [
-    "A teaspoon of a neutron star would weigh 6 billion tons! 🌌",
-    "Gallium is a metal that melts in your hand! 🫠",
-    "Dynamic Equilibrium: When reactions go both ways at once! ⚖️",
-    "Ada's Code + Chemistry = Maximum Energy! 🔥"
+    "Water expands when it freezes, unlike most substances! ❄️",
+    "A teaspoonful of a neutron star would weigh 6 billion tons! 🌌",
+    "The human body contains enough carbon to provide lead for 9,000 pencils! ✏️",
+    "Helium is the only element that cannot be solidified by sufficient cooling at normal atmospheric pressure! 🎈"
 ];
 
-function newFact() {
-    const display = document.getElementById('fact-display');
+function generateFact() {
+    const factDisplay = document.getElementById('fact-display');
     const randomFact = facts[Math.floor(Math.random() * facts.length)];
-    display.textContent = randomFact;
+    factDisplay.textContent = randomFact;
 }
 
-// 2. Project List
+// 2. Project Log Data
 const myWork = [
-    { name: "pH Calculator", icon: "🧪" },
-    { name: "Molecule Builder", icon: "💎" },
-    { name: "Forest City Portal", icon: "🏫" }
+    { title: "Acid-Base Sim", desc: "A colorful pH scale calculator." },
+    { title: "Periodic Pop", desc: "A game to memorize elements." },
+    { title: "FCIS Map", desc: "Finding the best snacks at school." }
 ];
 
-const projectGrid = document.getElementById('project-list');
-myWork.forEach(work => {
-    const item = document.createElement('div');
-    item.className = 'glass-card';
-    item.style.textAlign = 'center';
-    item.innerHTML = `<h1>${work.icon}</h1><h3>${work.name}</h3>`;
-    projectGrid.appendChild(item);
+const grid = document.getElementById('project-grid');
+myWork.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<h3>${item.title}</h3><p>${item.desc}</p>`;
+    grid.appendChild(card);
 });
 
-// 3. The Bubble Game
-let score = 0;
-let high = localStorage.getItem('adaBest') || 0;
-document.getElementById('high-score').textContent = high;
-
-function scorePoint() {
-    score++;
-    document.getElementById('current-score').textContent = score;
-    
-    if(score > high) {
-        high = score;
-        localStorage.setItem('adaBest', high);
-        document.getElementById('high-score').textContent = high;
-    }
-
-    const target = document.getElementById('game-target');
-    const x = (Math.random() - 0.5) * 250;
-    const y = (Math.random() - 0.5) * 250;
-    target.style.transform = `translate(${x}px, ${y}px) scale(${1 - score*0.01})`;
-    
-    // Changing emojis as you get higher score!
-    if(score > 10) target.textContent = "🧪";
-    if(score > 20) target.textContent = "💥";
-}
-
-// 4. Simple Upload Message
+// 3. File Upload (Cute version)
 function uploadFile() {
     const input = document.getElementById('fileInput');
+    const list = document.getElementById('fileList');
     if(input.files[0]) {
         const li = document.createElement('li');
-        li.textContent = `📎 ${input.files[0].name} synthesized!`;
-        document.getElementById('fileList').appendChild(li);
+        li.textContent = `🫧 Added to Lab: ${input.files[0].name}`;
+        list.appendChild(li);
+        input.value = "";
     }
+}
+
+// 4. Element Catcher Game
+let score = 0;
+function scorePoint() {
+    score++;
+    document.getElementById('score-val').textContent = score;
+    const target = document.getElementById('game-target');
+    
+    // Jump randomly within the container
+    const x = (Math.random() - 0.5) * 250;
+    const y = (Math.random() - 0.5) * 250;
+    target.style.transform = `translate(${x}px, ${y}px) scale(${1 + Math.random()})`;
 }
