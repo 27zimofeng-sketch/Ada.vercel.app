@@ -9,66 +9,65 @@
 </head>
 <body>
 
-    <div class="bg-blobs"></div>
+    <div class="bg-bubbles">
+        <div class="bubble-art"></div>
+        <div class="bubble-art"></div>
+        <div class="bubble-art"></div>
+    </div>
 
     <nav class="navbar">
-        <div class="logo">ADA.LAB ☁️</div>
+        <div class="logo">ADA.FENG ☁️</div>
         <div class="nav-links">
             <a href="#about">Bio</a>
-            <a href="#projects">Projects</a>
-            <a href="#resources">Vault</a>
-            <a href="#games">Play</a>
+            <a href="#lab">Lab</a>
+            <a href="#library">Library</a>
+            <a href="#play">Play</a>
         </div>
     </nav>
 
     <header id="about" class="hero">
-        <div class="profile-area">
-            <div class="avatar-frame">
-                <img src="your-photo.jpg" alt="Ada Feng" class="profile-pic">
-                <div class="status-dot"></div>
+        <div class="hero-card">
+            <div class="avatar-container">
+                <img src="your-photo.jpg" alt="Ada Feng" class="avatar">
+                <div class="badge">Student 🎓</div>
             </div>
-            <h1 class="typing-text">Hi, I'm Ada Feng!</h1>
-            <p class="school-tag">📍 Forest City International School</p>
-            <div class="tags">
-                <span>Chemistry Major 🧪</span>
-                <span>Web Dev 💻</span>
-                <span>Boba Lover 🧋</span>
+            <h1>Hi, I'm <span class="text-pop">Ada!</span></h1>
+            <p class="school">Forest City International School</p>
+            <p class="bio-text">I'm a <b>Chemistry major</b> who loves turning complex formulas into pretty code. Let's make some reactions! 🧪✨</p>
+            
+            <div class="chem-fact-box">
+                <span>💡 Did you know?</span>
+                <p id="fact-display">Click the beaker for a fact!</p>
+                <button onclick="generateFact()" class="mini-btn">🧪 Get Fact</button>
             </div>
         </div>
     </header>
 
-    <main>
-        <section id="fun-fact" class="glass-card">
-            <h3>Did you know? 💡</h3>
-            <p id="fact-display">Water expands when it freezes! Just like my code...</p>
-            <button onclick="newFact()" class="mini-btn">Next Fact</button>
-        </section>
+    <section id="lab" class="section">
+        <h2 class="section-title">My Experiment Log</h2>
+        <div id="project-grid" class="grid"></div>
+    </section>
 
-        <section id="projects" class="section">
-            <h2 class="section-title">My Creative Compounds</h2>
-            <div id="project-list" class="grid"></div>
-        </section>
-
-        <section id="resources" class="section">
-            <div class="glass-card upload-zone">
-                <h2>The Resource Vault</h2>
-                <p>Drop your study notes or assets here!</p>
+    <section id="library" class="section">
+        <div class="cloud-box">
+            <h2>The Resource Cloud</h2>
+            <p>Drop your study guides or assets here!</p>
+            <div class="upload-zone">
                 <input type="file" id="fileInput" hidden>
-                <label for="fileInput" class="upload-label">Choose a File ✨</label>
-                <button onclick="uploadFile()" class="btn-main">Synthesize Upload</button>
-                <ul id="fileList"></ul>
+                <label for="fileInput" class="upload-label">☁️ Choose a File</label>
+                <button onclick="uploadFile()" class="btn-round">Upload to Lab</button>
             </div>
-        </section>
+            <ul id="fileList" class="cute-list"></ul>
+        </div>
+    </section>
 
-        <section id="games" class="section">
-            <h2 class="section-title">Reaction Time Game</h2>
-            <div class="game-container">
-                <p>Click the bubble before it pops!</p>
-                <div id="game-target" onclick="scorePoint()">🫧</div>
-                <div class="score-board">Score: <span id="current-score">0</span> | Best: <span id="high-score">0</span></div>
-            </div>
-        </section>
-    </main>
+    <section id="play" class="section">
+        <h2 class="section-title">Element Catcher</h2>
+        <div class="game-container">
+            <p>Catch the floating Atom! Score: <span id="score-val">0</span></p>
+            <div id="game-target" onclick="scorePoint()">⚛️</div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
