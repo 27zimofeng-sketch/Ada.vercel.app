@@ -1,53 +1,61 @@
-// 1. Chemistry Facts Array
-const facts = [
-    "Water expands when it freezes, unlike most substances! ❄️",
-    "A teaspoonful of a neutron star would weigh 6 billion tons! 🌌",
-    "The human body contains enough carbon to provide lead for 9,000 pencils! ✏️",
-    "Helium is the only element that cannot be solidified by sufficient cooling at normal atmospheric pressure! 🎈"
-];
-
-function generateFact() {
-    const factDisplay = document.getElementById('fact-display');
-    const randomFact = facts[Math.floor(Math.random() * facts.length)];
-    factDisplay.textContent = randomFact;
-}
-
-// 2. Project Log Data
-const myWork = [
-    { title: "Acid-Base Sim", desc: "A colorful pH scale calculator." },
-    { title: "Periodic Pop", desc: "A game to memorize elements." },
-    { title: "FCIS Map", desc: "Finding the best snacks at school." }
+// 1. Dynamic Lab Inventory
+const labItems = [
+    { name: "Titration Tool", icon: "🧪", color: "#FFB7B2" },
+    { name: "FCIS Map UI", icon: "🏫", color: "#B2E2F2" },
+    { name: "Particle Sim", icon: "⚛️", color: "#B2F2BB" }
 ];
 
 const grid = document.getElementById('project-grid');
-myWork.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<h3>${item.title}</h3><p>${item.desc}</p>`;
-    grid.appendChild(card);
+labItems.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'project-card glass';
+    el.innerHTML = `
+        <div style="font-size: 2rem;">${item.icon}</div>
+        <h3>${item.name}</h3>
+        <p>A specialized digital solution for modern chemistry students.</p>
+    `;
+    grid.appendChild(el);
 });
 
-// 3. File Upload (Cute version)
+// 2. Resource Management
 function uploadFile() {
     const input = document.getElementById('fileInput');
-    const list = document.getElementById('fileList');
+    const container = document.getElementById('fileList');
     if(input.files[0]) {
-        const li = document.createElement('li');
-        li.textContent = `🫧 Added to Lab: ${input.files[0].name}`;
-        list.appendChild(li);
-        input.value = "";
+        const tag = document.createElement('span');
+        tag.className = 'file-tag';
+        tag.style.cssText = "background: #eef; padding: 5px 15px; border-radius: 20px; margin: 5px; display: inline-block;";
+        tag.textContent = `📎 ${input.files[0].name}`;
+        container.appendChild(tag);
     }
 }
 
-// 4. Element Catcher Game
+// 3. Mini-Game Logic
 let score = 0;
-function scorePoint() {
+let best = localStorage.getItem('adaBest') || 0;
+document.getElementById('best-score').textContent = best;
+
+function hit() {
     score++;
-    document.getElementById('score-val').textContent = score;
-    const target = document.getElementById('game-target');
+    document.getElementById('current-score').textContent = score;
     
-    // Jump randomly within the container
-    const x = (Math.random() - 0.5) * 250;
-    const y = (Math.random() - 0.5) * 250;
-    target.style.transform = `translate(${x}px, ${y}px) scale(${1 + Math.random()})`;
+    if(score > best) {
+        best = score;
+        localStorage.setItem('adaBest', best);
+        document.getElementById('best-score').textContent = best;
+    }
+
+    const target = document.getElementById('target');
+    const board = document.getElementById('board');
+    
+    // Calculate safe boundaries
+    const maxX = board.clientWidth - 50;
+    const maxY = board.clientHeight - 50;
+    
+    target.style.left = Math.random() * maxX + 'px';
+    target.style.top = Math.random() * maxY + 'px';
+    
+    // Add a little pop effect
+    target.style.transform = "scale(1.5)";
+    setTimeout(() => target.style.transform = "scale(1)", 100);
 }
