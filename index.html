@@ -3,69 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ada's Bubbling Lab 🧪</title>
+    <title>Ada Feng | Digital Lab</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="bg-bubbles">
-        <div class="bubble-art"></div>
-        <div class="bubble-art"></div>
-        <div class="bubble-art"></div>
+        <div class="bubble-element"></div>
+        <div class="bubble-element"></div>
+        <div class="bubble-element"></div>
     </div>
 
-    <nav class="navbar">
-        <div class="logo">ADA.FENG ☁️</div>
+    <nav class="glass-nav">
+        <div class="logo">ADA<span>FENG</span></div>
         <div class="nav-links">
             <a href="#about">Bio</a>
-            <a href="#lab">Lab</a>
-            <a href="#library">Library</a>
-            <a href="#play">Play</a>
+            <a href="#lab">Projects</a>
+            <a href="#storage">Files</a>
+            <a href="#play">Fun</a>
         </div>
     </nav>
 
     <header id="about" class="hero">
-        <div class="hero-card">
+        <div class="profile-card glass">
             <div class="avatar-container">
-                <img src="your-photo.jpg" alt="Ada Feng" class="avatar">
-                <div class="badge">Student 🎓</div>
+                <img src="ada-photo.jpg" alt="Ada Feng" class="avatar">
+                <div class="status-dot"></div>
             </div>
-            <h1>Hi, I'm <span class="text-pop">Ada!</span></h1>
-            <p class="school">Forest City International School</p>
-            <p class="bio-text">I'm a <b>Chemistry major</b> who loves turning complex formulas into pretty code. Let's make some reactions! 🧪✨</p>
-            
-            <div class="chem-fact-box">
-                <span>💡 Did you know?</span>
-                <p id="fact-display">Click the beaker for a fact!</p>
-                <button onclick="generateFact()" class="mini-btn">🧪 Get Fact</button>
+            <h1 class="typing-text">Hello, I'm Ada!</h1>
+            <p class="school-tag">Forest City International School</p>
+            <div class="stats">
+                <div class="stat-item"><b>Major</b><br>Chemistry 🧪</div>
+                <div class="stat-item"><b>Skills</b><br>JS/CSS 💻</div>
             </div>
+            <p class="bio-text">Converting coffee into code and reactions into results. Welcome to my digital workspace!</p>
         </div>
     </header>
 
     <section id="lab" class="section">
-        <h2 class="section-title">My Experiment Log</h2>
+        <h2 class="section-title">The Project Lab</h2>
         <div id="project-grid" class="grid"></div>
     </section>
 
-    <section id="library" class="section">
-        <div class="cloud-box">
-            <h2>The Resource Cloud</h2>
-            <p>Drop your study guides or assets here!</p>
-            <div class="upload-zone">
+    <section id="storage" class="section">
+        <div class="glass-box upload-zone">
+            <h2>Cloud Storage ☁️</h2>
+            <p>Drop your chemistry notes or code snippets here!</p>
+            <div class="upload-wrapper">
                 <input type="file" id="fileInput" hidden>
-                <label for="fileInput" class="upload-label">☁️ Choose a File</label>
-                <button onclick="uploadFile()" class="btn-round">Upload to Lab</button>
+                <label for="fileInput" class="custom-file-btn">Select File</label>
+                <button onclick="uploadFile()" class="action-btn">Upload</button>
             </div>
-            <ul id="fileList" class="cute-list"></ul>
+            <div id="fileList" class="file-tags"></div>
         </div>
     </section>
 
     <section id="play" class="section">
-        <h2 class="section-title">Element Catcher</h2>
-        <div class="game-container">
-            <p>Catch the floating Atom! Score: <span id="score-val">0</span></p>
-            <div id="game-target" onclick="scorePoint()">⚛️</div>
+        <div class="game-container glass">
+            <h2>Element Catcher</h2>
+            <p>Score: <span id="current-score">0</span> | Best: <span id="best-score">0</span></p>
+            <div class="game-board" id="board">
+                <div id="target" onclick="hit()">🧪</div>
+            </div>
         </div>
     </section>
 
