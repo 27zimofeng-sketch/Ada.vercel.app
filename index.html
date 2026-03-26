@@ -3,71 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ada Feng | Digital Lab</title>
+    <title>Ada Feng | Personal Profile</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="bg-bubbles">
-        <div class="bubble-element"></div>
-        <div class="bubble-element"></div>
-        <div class="bubble-element"></div>
-    </div>
-
-    <nav class="glass-nav">
-        <div class="logo">ADA<span>FENG</span></div>
-        <div class="nav-links">
-            <a href="#about">Bio</a>
-            <a href="#lab">Projects</a>
-            <a href="#storage">Files</a>
-            <a href="#play">Fun</a>
-        </div>
+    <nav class="navbar">
+        <div class="logo">ADA.FENG</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#resources">Vault</a></li>
+            <li><a href="#games">Play</a></li>
+        </ul>
     </nav>
 
-    <header id="about" class="hero">
-        <div class="profile-card glass">
-            <div class="avatar-container">
-                <img src="ada-photo.jpg" alt="Ada Feng" class="avatar">
-                <div class="status-dot"></div>
+    <header id="about" class="header">
+        <div class="hero-container">
+            <div class="profile-section">
+                <div class="profile-card" onclick="document.getElementById('p-upload').click()">
+                    <img src="default-avatar.jpg" id="displayPic" alt="Ada Feng">
+                    <div class="edit-hint">Change Photo</div>
+                </div>
+                <input type="file" id="p-upload" hidden onchange="updatePhoto()">
             </div>
-            <h1 class="typing-text">Hello, I'm Ada!</h1>
-            <p class="school-tag">Forest City International School</p>
-            <div class="stats">
-                <div class="stat-item"><b>Major</b><br>Chemistry 🧪</div>
-                <div class="stat-item"><b>Skills</b><br>JS/CSS 💻</div>
+
+            <div class="text-section">
+                <h1 class="greeting">Hi, I'm <span class="name-highlight">Ada Feng</span></h1>
+                <p class="school">Forest City International School</p>
+                <div class="bio-box">
+                    <p>I am a web developer passionate about creating clean, user-friendly experiences using <span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">JavaScript</span>.</p>
+                </div>
+                <div class="mood-container">
+                    <span>Current Mood:</span>
+                    <select id="moodSelect" onchange="changeMood()">
+                        <option value="✨ Productive">✨ Productive</option>
+                        <option value="☁️ Dreaming">☁️ Dreaming</option>
+                        <option value="☕ Coding">☕ Coding</option>
+                    </select>
+                </div>
             </div>
-            <p class="bio-text">Converting coffee into code and reactions into results. Welcome to my digital workspace!</p>
         </div>
     </header>
 
-    <section id="lab" class="section">
-        <h2 class="section-title">The Project Lab</h2>
-        <div id="project-grid" class="grid"></div>
+    <section id="projects" class="section">
+        <h2 class="title">Project Showreel</h2>
+        <div id="project-grid" class="grid">
+            </div>
     </section>
 
-    <section id="storage" class="section">
-        <div class="glass-box upload-zone">
-            <h2>Cloud Storage ☁️</h2>
-            <p>Drop your chemistry notes or code snippets here!</p>
-            <div class="upload-wrapper">
-                <input type="file" id="fileInput" hidden>
-                <label for="fileInput" class="custom-file-btn">Select File</label>
-                <button onclick="uploadFile()" class="action-btn">Upload</button>
+    <section id="resources" class="section alt-bg">
+        <h2 class="title">Personal Vault</h2>
+        <div class="glass-container">
+            <p>Upload and organize your project assets here.</p>
+            <div class="upload-area">
+                <input type="file" id="vaultInput">
+                <button class="btn-main" onclick="addToVault()">Upload to Vault</button>
             </div>
-            <div id="fileList" class="file-tags"></div>
+            <ul id="vaultList" class="file-list"></ul>
         </div>
     </section>
 
-    <section id="play" class="section">
-        <div class="game-container glass">
-            <h2>Element Catcher</h2>
-            <p>Score: <span id="current-score">0</span> | Best: <span id="best-score">0</span></p>
-            <div class="game-board" id="board">
-                <div id="target" onclick="hit()">🧪</div>
+    <section id="games" class="section">
+        <h2 class="title">Arcade Corner</h2>
+        <div class="game-container glass-container">
+            <div class="stats">
+                <span>Score: <b id="score">0</b></span>
+                <span>Best: <b id="best">0</b></span>
+            </div>
+            <div id="stage">
+                <div id="player" onclick="catchMe()">⭐</div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2026 Ada Feng. Built with Vanilla JS.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
